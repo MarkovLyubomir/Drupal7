@@ -1,0 +1,15 @@
+<?php
+
+function my_module_init() {
+
+}
+
+function my_module_menu() {
+  $items['admin/config/my-module'] = [
+    'title' => 'Config Page',
+    'description' => 'My module config page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('my_module_settings_form'),
+    'access callbacl' => true,
+  ];
+}

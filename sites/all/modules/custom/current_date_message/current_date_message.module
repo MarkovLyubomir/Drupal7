@@ -1,0 +1,53 @@
+<?php
+
+function current_date_message_init() {
+  if (variable_get('show_date_checkbox', true)) {
+    $status = variable_get('choose_alert_type_select', 'status');
+
+    drupal_set_message(t('Today is ' . date('l, F d, Y')), $status);
+  }
+
+}
+
+/*
+ * Implement hoot_menu()
+ *
+ */
+function current_date_message_menu() {
+  $items['admin/config/current-date-message'] = [
+    'title' => 'Config Page',
+    'description' => 'Current date message configuration page.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('current_date_message_settings_form'),
+    'access callback' => true,
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  return $items;
+}
+
+/*
+ * Config page callback for Current Date Message Module
+ *
+ */
+function current_date_message_settings_form($form, $form_state) {
+
+	$form = array(
+    'show_date_checkbox' => [
+      '#type' => 'checkbox',
+      '#title' => 'Show Current Date',
+      '#default_value' => variable_get('show_date_checkbox', true),
+    ],
+    'choose_alert_type_select' => [
+      '#type' => 'select',
+      '#options' => [
+        'status' => 'Status',
+        'error' => 'Error',
+        'warning' => 'Warning',
+      ],
+      '#default_value' => variable_get('choose_alert_type_select', 'status'),
+    ]
+  );
+
+	return system_settings_form($form, 'asd');
+}

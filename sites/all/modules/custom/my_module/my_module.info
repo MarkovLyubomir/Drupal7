@@ -1,0 +1,8 @@
+name = My module
+description = Description
+core = 7.x
+package = lmarkov
+;dependencies[] = Views
+;dependencies[] = Panels
+;files[] = test/example.test
+configure = admin/config/my-module

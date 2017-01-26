@@ -1,0 +1,5 @@
+name = Drupal Back-end
+description = Show message with current date.
+core = 7.x
+package = Drupal Back-end
+configure = admin/config/current-date-message
